@@ -10,10 +10,13 @@ const resultado = document.getElementById('resultado');
 let amigos = []; 
 
 function agregarAmigo () {
-    amigos.push(entrada_amigo.value); 
-    actualizarLista(); 
-    entrada_amigo.value = ''; 
-    console.log(amigos);
+    if (entrada_amigo.value == '' || entrada_amigo.value == null) {
+        alert('Por favor, inserte un nombre valido. Intente de nuevo. ');
+    } else {
+        amigos.push(entrada_amigo.value); 
+        actualizarLista(); 
+        entrada_amigo.value = ''; 
+    }
 } 
 
 function actualizarLista () {
