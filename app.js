@@ -4,22 +4,29 @@
 const entrada_amigo = document.getElementById('amigo');  
 const agregarBtn = document.getElementsByClassName('button-add');
 const sortaerBtn = document.getElementsByClassName('button-draw'); 
-const lista = document.getElementById('listaAmigos'); 
+const listaAmigos = document.getElementById('listaAmigos'); 
 const resultado = document.getElementById('resultado');
 
-let listaAmigos = []; 
-
-// agregarBtn.addEventListener('click', agregarAmigo()); 
+let amigos = []; 
 
 function agregarAmigo () {
-    listaAmigos.push(entrada_amigo.value); 
+    amigos.push(entrada_amigo.value); 
     actualizarLista(); 
     entrada_amigo.value = ''; 
-    console.log(listaAmigos);
+    console.log(amigos);
 } 
 
 function actualizarLista () {
     const nuevoAmigo = document.createElement('li'); 
     nuevoAmigo.textContent = entrada_amigo.value;
-    lista.appendChild(nuevoAmigo); 
+    listaAmigos.appendChild(nuevoAmigo); 
+}
+
+function sortearAmigo () {
+    const numeroAleatorio = Math.floor(Math.random() * amigos.length) + 1; 
+    const amigoSecreto = document.createElement('li'); 
+    amigoSecreto.textContent = `¡${amigos[numeroAleatorio - 1]}!`;
+    resultado.appendChild(amigoSecreto);
+
+    listaAmigos.innerHTML = ''; 
 }
